@@ -1,0 +1,45 @@
+<ng-container  *ngIf="pageload==='completed'">
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+  
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <span class="cp" (click)="onEdit(element)"  >
+          <img src="/assets/images/icons/edit.svg" alt="Edit" width="16px">
+        </span>
+        <span style="margin-left: 8px;" class="cp" (click)="onDelete(element.id)">
+          <img src="/assets/images/icons/delete.svg" alt="Delete" width="14px">
+        </span>
+      </td>
+    </ng-container>
+
+
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+
+</ng-container>
+

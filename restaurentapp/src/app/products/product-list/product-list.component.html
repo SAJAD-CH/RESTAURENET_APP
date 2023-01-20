@@ -1,0 +1,59 @@
+<div class="mt-3">
+    <mat-grid-list cols="4">
+      <ng-container *ngFor="let fooditem of fooditemss">
+        <mat-grid-tile>
+          <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>{{fooditem.name}}</mat-card-title>
+              </mat-card-header>
+              <img mat-card-image src="assets/images/products/{{fooditem.iconname}}.jpg" alt="Biriyani">
+
+              <mat-card-content>
+                <span>
+                  Rating:{{fooditem.rating}}
+                </span>
+                <br>
+                <span>
+                  Price:{{fooditem.price}}
+                </span>
+
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button>Add to Cart</button>
+                <button mat-button>Order Now</button>
+              </mat-card-actions>
+          </mat-card>
+      </mat-grid-tile>
+
+      </ng-container>
+      
+
+   
+    </mat-grid-list>
+</div>
+
+<!-- export const fooditems = [
+  {
+    name: 'Biriyani',
+    description: 'Biriyani is .....',
+    price: 150,
+    category: 'Rice & Biriyani',
+    rating: 4
+  },
+  {
+    name: 'Chicken curry',
+    description: '.........',
+    price: 150,
+    category: 'Rice & Biriyani',
+    rating: 4
+  }
+] -->
+
+
+
+
+
+
+
+
+
