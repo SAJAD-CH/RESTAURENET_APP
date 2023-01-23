@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { fooditems } from '../data/food-items';
 import {Observable,of,Subject} from 'rxjs'
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -14,12 +15,20 @@ export class ProductserviceService {
   
   
 
-  constructor() { }
+  constructor(
+    private http:HttpClient) {
 
+   }
+// ["s_1","s_2","s_3"]
   getfooditems():Observable<any>{
-    return of(this.products);
+    return this.http.get('http://localhost:3000/product/list')
   }
-  addproduct(name:any,price:any,description:any){
+
+//   getRests(): Observable<any> {
+// return of([''])
+//   }
+
+  addproduct(name:any,price:any,description:any):Observable<any>{
     const newProduct=Object.assign({},{
       "name": name,
         "description":description,
@@ -28,8 +37,11 @@ export class ProductserviceService {
         "iconname": 'biriyani',
         "rating": 3
     })
-    this.products.push(newProduct)
-    this.productnotifier.next()
+    console.log('newproduct',newProduct);
+    return this.http.post('http://localhost:3000/product',newProduct)
+    
+    // this.products.push(newProduct)
+    // this.productnotifier.next()
   }
 
 

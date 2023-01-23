@@ -45,12 +45,20 @@ export class AddProductsComponent {
   onSave(){
    //create method add product  on productservice  and pass name,price,description as object
    this.productservice.addproduct(this.name,this.price,this.description)
-   this.dialogRef.close();
+   .subscribe((resp)=>{
+    this.dialogRef.close();
+    this.productservice.productnotifier.next();
+   })
+   
   }
 
   onEdit() {
     this.productservice.updateProduct({name: this.name, price: this.price, description: this.description, id: this.id});
     this.dialogRef.close();
+  }
+
+  onkp() {
+    // this.productservice.productnotifier.next();
   }
 
 }

@@ -3,7 +3,6 @@ import { Component,EventEmitter,Input, Output, SimpleChanges } from '@angular/co
 import { ProductserviceService } from 'src/app/products/service/productservice.service';
 
 
-
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
@@ -18,9 +17,6 @@ export class ListProductsComponent {
   pageload="loading";
   loaded:any=false;
   @Input() searchString:String=''
-
-
-
 
   constructor(private productService:ProductserviceService){
     this.productService.productnotifier.subscribe(()=>{
@@ -52,13 +48,17 @@ export class ListProductsComponent {
     this.loaded=true
     this.productService.getfooditems()
     .subscribe((foodItems:any)=>{
-      
       console.log('...',foodItems);
       setTimeout(()=>{
         this.pageload="completed";
       },0)
+      // console.log(foodItems);
+      
       this.dataSource=foodItems
       this.mainsource=foodItems
+    },(err:any)=>{
+      console.log(err);
+      
     });
   }
 

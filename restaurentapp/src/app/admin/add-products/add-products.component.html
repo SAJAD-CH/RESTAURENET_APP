@@ -5,7 +5,7 @@
       <div>
         <mat-form-field style="width: 70%;">
           <mat-label>Name</mat-label>
-          <input matInput [(ngModel)]="name">
+          <input matInput [(ngModel)]="name" (keypress)="onkp()">
         </mat-form-field>
       </div>
       <div>

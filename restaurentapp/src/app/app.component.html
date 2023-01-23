@@ -1,4 +1,4 @@
-<app-menu-bar></app-menu-bar>
+<app-menu-bar [objChild]="obj" (newEv)="onEv($event)"></app-menu-bar>
 <div>
  <router-outlet></router-outlet>
 </div>
